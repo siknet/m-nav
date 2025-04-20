@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google"
+import { Metadata } from "next"
 
-import "@workspace/ui/globals.css"
+import "@m-nav/ui/globals.css"
 import { Providers } from "@/components/providers"
 
 const fontSans = Geist({
@@ -12,6 +13,18 @@ const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 })
+
+export const metadata: Metadata = {
+  title: {
+    default: 'M-Nav',
+    template: `%s - M-Nav`
+  },
+  description: 'A simple and convenient navigation website with notion',
+  icons: {
+    icon: "/logo.ico",
+    shortcut: "/logo.png"
+  }
+}
 
 export default function RootLayout({
   children,
