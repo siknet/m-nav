@@ -22,5 +22,11 @@
   },
   "dependencies": {
     "husky": "^9.1.7"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "core-js-pure",
+      "sharp"
+    ]
   }
 }

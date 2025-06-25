@@ -1,41 +1,65 @@
-import { Geist, Geist_Mono } from "next/font/google"
-import { Metadata } from "next"
-
-import "@m-nav/ui/globals.css"
-import { Providers } from "@/components/providers"
-
-const fontSans = Geist({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
-
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
+import { Metadata, Viewport } from 'next'
+import '@m-nav/ui/styles/globals.css'
+import { Providers } from '@/components/providers'
+import { fontSans, fontMono } from '@/lib/fonts'
+import { META_THEME_COLORS, siteConfig } from '@/config/site'
 
 export const metadata: Metadata = {
   title: {
-    default: 'M-Nav',
-    template: `%s - M-Nav`
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`
   },
-  description: 'A simple and convenient navigation website with notion',
+  metadataBase: new URL(siteConfig.url),
+  description: siteConfig.description,
+  keywords: ['Next.js', 'React'],
+  authors: [
+    {
+      name: 'busyhe',
+      url: 'https://github.com/busyhe'
+    }
+  ],
+  creator: 'busyhe',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: '@busyhe'
+  },
   icons: {
-    icon: "/logo.ico",
-    shortcut: "/logo.png"
+    icon: '/favicon.ico',
+    shortcut: '/logo.png'
   }
 }
 
+export const viewport: Viewport = {
+  themeColor: META_THEME_COLORS.light
+}
+
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
-      >
+      <body className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}>
         <Providers>{children}</Providers>
       </body>
     </html>
