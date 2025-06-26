@@ -24,19 +24,9 @@ cd m-nav
 pnpm install
 ```
 
-3. Create a Notion integration:
-   - Go to [Notion Developers](https://www.notion.so/my-integrations)
-   - Create a new integration
-   - Copy the "Internal Integration Token"
+3. Create a `.env.local` file in the `apps/web` directory:
 
-4. Share your Notion page with the integration:
-   - Open your Notion page
-   - Click "Share" in the top right
-   - Add your integration using the email address shown in the integration settings
-
-5. Create a `.env.local` file in the `apps/web` directory:
-
-```
+```bash
 NOTION_PAGE_ID=your_notion_page_id
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 ```
@@ -63,32 +53,22 @@ Your Notion page should contain one or more databases with the following propert
 - **Description/Desc**: A short description of the item (optional)
 - **Link/URL**: The URL to navigate to when clicking the item
 
-## Development
+## Deploy on Vercel
 
-```bash
-pnpm dev
-```
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new).
 
-## Build
+1. Duplicate this Notion template
 
-```bash
-pnpm build
-```
+   [Notion nav demo page](https://busyhe.notion.site/192bba2b2ae7806bb290c70c06dc0447?v=192bba2b2ae780c499e4000c52e7df77)
 
-## Adding UI Components
+2. Click the button below to deploy:
 
-To add shadcn/ui components to your app, run:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbusyhe%2Fm-nav)
 
-```bash
-pnpm dlx shadcn@latest add button -c apps/web
-```
+3. Configure environment variables:
+   - Set `NOTION_PAGE_ID` to your Notion page ID
+   - Set `NEXT_PUBLIC_GA_ID` to your Google Analytics ID (optional)
 
-This will place the UI components in the `packages/ui/src/components` directory.
+4. Deploy and enjoy your navigation site!
 
-## Using Components
-
-To use the components in your app, import them from the `ui` package:
-
-```tsx
-import { Button } from "@m-nav/ui/components/button"
-```
+You can also manually deploy by pushing to your Vercel-connected GitHub repository.
