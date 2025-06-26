@@ -1,5 +1,6 @@
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
+import { SiteCard } from '@/components/site-card';
 import { getPageData } from '@/lib/notion';
 
 export default async function Page() {
@@ -23,7 +24,6 @@ export default async function Page() {
       <SiteHeader title={pageData?.title} />
       <main className='flex flex-1 flex-col container-wrapper'>
         <div className='container py-4'>
-
           {error && (
             <div className='p-4 mb-6 rounded-lg bg-destructive/10 text-destructive'>
               <p>Error: {error}</p>
@@ -51,20 +51,13 @@ export default async function Page() {
               <h2 className='text-xl font-semibold mb-4 capitalize'>{type}</h2>
               <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
                 {pageData?.items?.[type]?.map((item) => (
-                  <a
+                  <SiteCard
                     key={item.id}
+                    title={item.title}
+                    description={item.description || ''}
                     href={item.link}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='block p-4 rounded-sm border bg-card text-card-foreground hover:shadow-md transition-shadow'
-                  >
-                    <h3 className='font-medium mb-2'>{item.title}</h3>
-                    {item.description && (
-                      <p className='text-sm text-muted-foreground'>
-                        {item.description}
-                      </p>
-                    )}
-                  </a>
+                    category={type}
+                  />
                 ))}
               </div>
             </div>
