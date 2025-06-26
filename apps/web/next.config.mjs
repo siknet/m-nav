@@ -10,7 +10,10 @@ const nextConfig = {
       's3.us-west-2.amazonaws.com'
     ],
     formats: ['image/avif', 'image/webp']
-  }
+  },
+  env: {
+    NOTION_PAGE_ID: process.env.NOTION_PAGE_ID
+  },
 }
 
 export default nextConfig
