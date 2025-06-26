@@ -3,7 +3,7 @@ import { getFavicons, proxyFavicon } from '@/lib/server';
 
 export const runtime = 'edge';
 
-export async function GET(request: NextRequest, { params }: { params: { domain: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ domain: string }> }) {
   const { domain } = await params;
   const startTime = Date.now();
   const asciiDomain = new URL(`http://${domain}`).hostname;

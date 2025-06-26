@@ -37,11 +37,10 @@ pnpm install
 5. Create a `.env.local` file in the `apps/web` directory:
 
 ```
-NOTION_TOKEN=your_notion_integration_token
 NOTION_PAGE_ID=your_notion_page_id
 ```
 
-Replace `your_notion_integration_token` with the token from step 3 and `your_notion_page_id` with your Notion page ID (the part of the URL after `notion.so/` and before any `?` character).
+ `your_notion_page_id` with your Notion page ID (the part of the URL after `notion.so/` and before any `?` character).
 
 ## Notion Database Structure
 
