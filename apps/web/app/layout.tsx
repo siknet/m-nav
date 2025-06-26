@@ -1,6 +1,7 @@
 import { Metadata, Viewport } from 'next'
 import '@m-nav/ui/styles/globals.css'
 import { Providers } from '@/components/providers'
+import { Analytics } from '@/components/analytics'
 import { fontSans, fontMono } from '@/lib/fonts'
 import { META_THEME_COLORS, siteConfig } from '@/config/site'
 
@@ -61,6 +62,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}>
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   )

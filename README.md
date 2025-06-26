@@ -38,9 +38,21 @@ pnpm install
 
 ```
 NOTION_PAGE_ID=your_notion_page_id
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 ```
 
- `your_notion_page_id` with your Notion page ID (the part of the URL after `notion.so/` and before any `?` character).
+Replace `your_notion_page_id` with your Notion page ID (the part of the URL after `notion.so/` and before any `?` character).
+
+Replace `G-XXXXXXXXXX` with your Google Analytics Measurement ID, or remove/leave empty to disable Google Analytics.
+
+## Google Analytics Configuration
+
+Google Analytics is conditionally enabled based on the `NEXT_PUBLIC_GA_ID` environment variable:
+
+- **To enable**: Set `NEXT_PUBLIC_GA_ID` to your Google Analytics Measurement ID (e.g., `G-XXXXXXXXXX`)
+- **To disable**: Remove the variable or leave it empty
+
+The Google Analytics integration will only load when the environment variable is present and not empty, ensuring no tracking occurs in development or when analytics are not desired.
 
 ## Notion Database Structure
 
