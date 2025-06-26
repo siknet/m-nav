@@ -28,7 +28,7 @@ export default async function Page() {
             <div className='p-4 mb-6 rounded-lg bg-destructive/10 text-destructive'>
               <p>Error: {error}</p>
               <p className='text-sm mt-2'>
-                Make sure you have set up the NOTION_TOKEN and NOTION_PAGE_ID
+                Make sure you have set up the NOTION_PAGE_ID
                 environment variables correctly.
               </p>
             </div>
