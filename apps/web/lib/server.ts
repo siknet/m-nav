@@ -60,8 +60,6 @@ export const getFavicons = async ({
     const matches = Array.from(body.matchAll(regex));
     const icons: { sizes: string; href: string }[] = [];
 
-    console.debug('[DEBUG__lib/server.ts-matches]', matches)
-
     matches.forEach((match) => {
       const linkTag = match[0];
 

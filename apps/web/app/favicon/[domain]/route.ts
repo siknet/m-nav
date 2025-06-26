@@ -3,7 +3,10 @@ import { getFavicons, proxyFavicon } from '@/lib/server';
 
 export const runtime = 'edge';
 
-export async function GET(request: NextRequest, { params }: { params: Promise<{ domain: string }> }) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ domain: string }> }
+) {
   const { domain } = await params;
   const startTime = Date.now();
   const asciiDomain = new URL(`http://${domain}`).hostname;
@@ -19,30 +22,14 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
       status: 404,
       headers: {
         'Cache-Control': 'public, max-age=86400',
-        'Content-Type': 'image/svg+xml'
-      }
+        'Content-Type': 'image/svg+xml',
+      },
     });
-  }
+  };
 
   // Validate domain name format
   if (!/([a-z0-9-]+\.)+[a-z0-9]{1,}$/.test(asciiDomain)) {
     return svg404();
-  }
-
-  const larger: boolean = request.nextUrl.searchParams.get('larger') === 'true';
-
-  if (larger) {
-    const duckduckgoUrl = `https://icons.duckduckgo.com/ip3/${asciiDomain}.ico`;
-    try {
-      const response = await fetch(duckduckgoUrl, {
-        redirect: 'follow'
-      });
-      if (response.ok) {
-        return response;
-      }
-    } catch (error: any) {
-      console.error("duckduckgo larger", error.message);
-    }
   }
 
   let icons: { sizes?: string; href: string }[] = [];
@@ -55,7 +42,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   let url = `http://${asciiDomain}`;
   try {
     const data = await getFavicons({ url, headers });
-    console.debug('[DEBUG__[domain]/route.ts-data]', data)
+    console.debug('[DEBUG__[domain]/route.ts-data]', data);
     icons = data.icons;
   } catch (error) {
     console.error(error);
@@ -76,20 +63,10 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   if (icons.length === 0) {
     return proxyFavicon({ domain: asciiDomain });
   }
-
-  // Select the appropriate icon based on the 'larger' parameter
-  if (larger) {
-    selectedIcon = icons.reduce((prev, curr) => {
-      const prevWidth = (prev.sizes || '0x0').split('x')[0];
-      const currWidth = (curr.sizes || '0x0').split('x')[0];
-      return Number(currWidth) > Number(prevWidth) ? curr : prev;
-    });
-  } else {
-    selectedIcon = icons[0];
-  }
+  selectedIcon = icons[0];
 
   try {
-    if (selectedIcon && selectedIcon.href.includes("data:image")) {
+    if (selectedIcon && selectedIcon.href.includes('data:image')) {
       const base64Data = selectedIcon.href.split(',')[1];
       if (base64Data) {
         const iconBuffer = Buffer.from(base64Data, 'base64');
@@ -101,18 +78,21 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
           status: 200,
           headers: {
             'Cache-Control': 'public, max-age=86400',
-            'Content-Type': selectedIcon.href.replace(/data:(image.*?);.*/, '$1'),
+            'Content-Type': selectedIcon.href.replace(
+              /data:(image.*?);.*/,
+              '$1'
+            ),
             'Content-Length': iconBuffer.byteLength.toString(),
             'X-Execution-Time': `${executionTime} ms`,
-          }
+          },
         });
       }
     }
-    
+
     if (!selectedIcon) {
       return svg404();
     }
-    
+
     const iconResponse = await fetch(selectedIcon.href, { headers });
     // Calculate execution time
     const endTime = Date.now();
@@ -128,7 +108,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
         'Content-Type': iconResponse.headers.get('Content-Type') || 'image/png',
         'Content-Length': iconBuffer.byteLength.toString(),
         'X-Execution-Time': `${executionTime}ms`,
-      }
+      },
     });
   } catch (error) {
     console.error(`Error fetching the selected icon: ${error}`);
