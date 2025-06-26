@@ -22,19 +22,45 @@ export const getFavicons = async ({
 
   try {
     // Perform the fetch request with optional headers and redirection follow
+    const requestHeaders = new Headers(headers);
+    requestHeaders.set('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8');
+    requestHeaders.set('Accept-Language', 'en-US,en;q=0.5');
+    requestHeaders.set('Accept-Encoding', 'gzip, deflate');
+    requestHeaders.set('User-Agent', 'Mozilla/5.0 (compatible; FaviconBot/1.0)');
+    
     const response = await fetch(newUrl.toString(), {
       method: 'GET',
       redirect: 'follow',
-      headers,
+      headers: requestHeaders,
     });
 
-    const body = await response.text();
+    // 获取响应的字符编码
+    const contentType = response.headers.get('content-type') || '';
+    let body: string;
+    
+         // 尝试从 Content-Type 头部获取编码
+     const charsetMatch = contentType.match(/charset=([^;]+)/i);
+     const charset = charsetMatch?.[1]?.toLowerCase() || null;
+    
+    if (charset && charset !== 'utf-8') {
+      // 如果指定了非 UTF-8 编码，使用 arrayBuffer 然后解码
+      const buffer = await response.arrayBuffer();
+      const decoder = new TextDecoder(charset);
+      body = decoder.decode(buffer);
+    } else {
+      // 默认使用 UTF-8
+      body = await response.text();
+    }
+    
     const responseUrl = new URL(response.url);
 
-    // Regex to match <link> tags with "rel" containing "icon"
-    const regex = /<link[^>]*rel=['"]?[^\s]*icon['"]?[^>]*?>/gi;
+    // Regex to match <link> tags with "rel" containing icon-related values
+    // Matches: icon, shortcut icon, apple-touch-icon, apple-touch-icon-precomposed, etc.
+    const regex = /<link[^>]*rel=['"]?[^'"]*(?:shortcut\s+|apple-touch-)?icon[^'"]*['"]?[^>]*?>/gi;
     const matches = Array.from(body.matchAll(regex));
     const icons: { sizes: string; href: string }[] = [];
+
+    console.debug('[DEBUG__lib/server.ts-matches]', matches)
 
     matches.forEach((match) => {
       const linkTag = match[0];
@@ -48,12 +74,25 @@ export const getFavicons = async ({
       const sizes = sizesMatch ? sizesMatch[1] : null;
 
       if (href) {
+        let fullHref: string;
+        
+        if (href.startsWith('http') || href.startsWith('data:image')) {
+          // 绝对 URL 或 data URL
+          fullHref = href;
+        } else if (href.startsWith('//')) {
+          // 协议相对 URL (//example.com/favicon.ico)
+          fullHref = `${responseUrl.protocol}${href}`;
+        } else if (href.startsWith('/')) {
+          // 根相对 URL (/favicon.ico)
+          fullHref = `${responseUrl.protocol}//${responseUrl.host}${href}`;
+        } else {
+          // 相对 URL (favicon.ico)
+          fullHref = `${responseUrl.protocol}//${responseUrl.host}/${href}`;
+        }
+        
         icons.push({
           sizes: sizes || 'unknown',
-          href:
-            href.startsWith('http') || href.startsWith('data:image')
-              ? href
-              : `${responseUrl.protocol}//${responseUrl.host}${/^\/.*/.test(href) ? href : `/${href}`}`,
+          href: fullHref,
         });
       }
     });

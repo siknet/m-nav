@@ -27,7 +27,7 @@ export function SiteCard({
         <CardTitle className='flex items-center flex-row justify-between'>
           <div className='flex items-center flex-row gap-2'>
             <Image
-              src={`/favicon/${new URL(href || '').hostname}`}
+              src={`/favicon/${new URL(href || '').hostname}?larger=true`}
               alt={title}
               width={20}
               height={20}

@@ -55,6 +55,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   let url = `http://${asciiDomain}`;
   try {
     const data = await getFavicons({ url, headers });
+    console.debug('[DEBUG__[domain]/route.ts-data]', data)
     icons = data.icons;
   } catch (error) {
     console.error(error);
