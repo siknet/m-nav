@@ -3,6 +3,8 @@ import { SiteFooter } from '@/components/site-footer';
 import { SiteCard } from '@/components/site-card';
 import { getPageData } from '@/lib/notion';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Page() {
   let pageData;
   let error = null;
