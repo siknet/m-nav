@@ -1,6 +1,5 @@
 import { NotionAPI } from 'notion-client';
 import { idToUuid, getPageTitle } from 'notion-utils';
-import { unstable_noStore as noStore } from 'next/cache';  // 添加这一行
 
 // Initialize the Notion client
 const notion = new NotionAPI({
@@ -14,7 +13,6 @@ export default function getAllPageIds(
   collectionView: Record<string, any>,
   viewIds: string[] | undefined
 ) {
-  noStore();
   
   // Return empty array if any required parameters are missing
   if (!collectionQuery || !collectionId || !viewIds || viewIds.length === 0) {
