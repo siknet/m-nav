@@ -1,6 +1,5 @@
 import { NotionAPI } from 'notion-client';
 import { idToUuid, getPageTitle } from 'notion-utils';
-import { cache } from 'react';
 
 // Initialize the Notion client
 const notion = new NotionAPI({
@@ -93,9 +92,7 @@ export interface PageData {
   items: Record<string, DatabaseItem[]>;
 }
 
-// Cache the getPageData function using React's cache
-export const getPageData = cache(async (): Promise<PageData> => {
-  console.debug('[DEBUG__lib/notion.ts-process.env]', process.env)
+export const getPageData = async (): Promise<PageData> => {
   if (!process.env.NOTION_PAGE_ID) {
     throw new Error('NOTION_PAGE_ID is not defined in environment variables');
   }
@@ -171,12 +168,12 @@ export const getPageData = cache(async (): Promise<PageData> => {
       });
 
     // Sort each category by title
-    Object.keys(itemsByType).forEach((type) => {
-      const items = itemsByType[type];
-      if (items) {
-        items.sort((a, b) => a.title.localeCompare(b.title));
-      }
-    });
+    // Object.keys(itemsByType).forEach((type) => {
+    //   const items = itemsByType[type];
+    //   if (items) {
+    //     items.sort((a, b) => a.title.localeCompare(b.title));
+    //   }
+    // });
 
     return {
       title,
@@ -187,4 +184,4 @@ export const getPageData = cache(async (): Promise<PageData> => {
     console.error('Error fetching Notion data:', error);
     throw error;
   }
-});
+};

@@ -81,9 +81,9 @@ export const getFavicons = async ({
 export const proxyFavicon = async ({ domain }: { domain: string }) => {
   // List of alternative sources to fetch favicons
   const sources = [
+    `https://favicon.im/${domain}?larger=true`,
     `https://www.google.com/s2/favicons?domain=${domain}`,
     `https://icons.duckduckgo.com/ip3/${domain}.ico`,
-    `https://favicon.im/${domain}?larger=true`
   ];
   let response: Response = new Response('', {
     status: 500,
