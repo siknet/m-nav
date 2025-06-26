@@ -1,5 +1,6 @@
 import { NotionAPI } from 'notion-client';
 import { idToUuid, getPageTitle } from 'notion-utils';
+import { unstable_noStore as noStore } from 'next/cache';  // 添加这一行
 
 // Initialize the Notion client
 const notion = new NotionAPI({
@@ -96,6 +97,8 @@ export const getPageData = async (): Promise<PageData> => {
   if (!process.env.NOTION_PAGE_ID) {
     throw new Error('NOTION_PAGE_ID is not defined in environment variables');
   }
+
+  noStore();
 
   const envPageId = process.env.NOTION_PAGE_ID;
   const pageId = idToUuid(envPageId);
