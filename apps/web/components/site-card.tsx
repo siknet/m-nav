@@ -45,7 +45,7 @@ export function SiteCard({
             <Button
               variant='ghost'
               size='icon'
-              className='opacity-0 group-hover:opacity-100 transition-opacity'
+              className='opacity-0 group-hover:opacity-100 transition-opacity max-sm:opacity-100 max-sm:bg-accent'
             >
               <ArrowUpRightIcon className='w-4 h-4' />
             </Button>
