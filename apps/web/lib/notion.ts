@@ -1,4 +1,4 @@
-'use server';
+// 'use server';
 
 import { NotionAPI } from 'notion-client';
 import { idToUuid, getPageTitle } from 'notion-utils';
