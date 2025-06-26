@@ -2,8 +2,11 @@ import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteCard } from '@/components/site-card';
 import { getPageData } from '@/lib/notion';
+import { connection } from 'next/server'
 
 export default async function Page() {
+  await connection()
+
   let pageData;
   let error = null;
 
