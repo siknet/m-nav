@@ -95,6 +95,7 @@ export interface PageData {
 
 // Cache the getPageData function using React's cache
 export const getPageData = cache(async (): Promise<PageData> => {
+  console.debug('[DEBUG__lib/notion.ts-process.env]', process.env)
   if (!process.env.NOTION_PAGE_ID) {
     throw new Error('NOTION_PAGE_ID is not defined in environment variables');
   }
