@@ -96,14 +96,13 @@ export interface PageData {
 }
 
 export const getPageData = async (): Promise<PageData> => {
+  console.debug('[DEBUG__lib/notion.ts-getPageData]')
   if (!process.env.NOTION_PAGE_ID) {
     throw new Error('NOTION_PAGE_ID is not defined in environment variables');
   }
 
   const envPageId = process.env.NOTION_PAGE_ID;
   const pageId = idToUuid(envPageId);
-
-  console.debug('[DEBUG__lib/notion.ts-envPageId]', envPageId);
 
   try {
     // Fetch the page data with additional options

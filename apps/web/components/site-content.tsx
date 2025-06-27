@@ -1,7 +1,9 @@
 import { DatabaseItem, getPageData } from '@/lib/notion';
 import { SiteCard } from './site-card';
+import { unstable_noStore as noStore } from 'next/cache';
 
 export const SiteContent = async () => {
+  noStore();
   const siteData = await getPageData();
 
   return Object.keys(siteData.items || {}).map((type: string) => (
