@@ -63,7 +63,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 2. Click the button below to deploy:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbusyhe%2Fm-nav)
+   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbusyhe%2Fm-nav)
 
 3. Configure environment variables:
    - Set `NOTION_PAGE_ID` to your Notion page ID
