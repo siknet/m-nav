@@ -4,3 +4,6 @@ packages:
 catalog:
   "@next/third-parties": ^15.3.4
   next: ^15.3.4
+  notion-client: ^6.16.0
+  notion-types: ^6.16.0
+  notion-utils: ^6.16.0

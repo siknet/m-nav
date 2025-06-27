@@ -1,9 +1,9 @@
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
-import { SiteCard } from '@/components/site-card';
+import { SiteContent } from '@/components/site-content';
 import { getPageData } from '@/lib/notion';
 
-// export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic';
 
 export default async function Page() {
   let pageData;
@@ -48,22 +48,7 @@ export default async function Page() {
             </div>
           )}
 
-          {Object.keys(pageData?.items || {}).map((type) => (
-            <div key={type} className='mb-8'>
-              <h2 className='text-xl font-semibold mb-4 capitalize'>{type}</h2>
-              <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-                {pageData?.items?.[type]?.map((item) => (
-                  <SiteCard
-                    key={item.id}
-                    title={item.title}
-                    description={item.description || ''}
-                    href={item.link}
-                    category={type}
-                  />
-                ))}
-              </div>
-            </div>
-          ))}
+          <SiteContent siteData={pageData.items} />
         </div>
       </main>
       <SiteFooter />

@@ -6,6 +6,7 @@ import { idToUuid, getPageTitle } from 'notion-utils';
 // Initialize the Notion client
 const notion = new NotionAPI({
   authToken: process.env.NOTION_TOKEN,
+  userTimeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 });
 
 // Helper function to get all page IDs from a collection
@@ -15,32 +16,31 @@ export default function getAllPageIds(
   collectionView: Record<string, any>,
   viewIds: string[] | undefined
 ) {
-  
   // Return empty array if any required parameters are missing
   if (!collectionQuery || !collectionId || !viewIds || viewIds.length === 0) {
     return [];
   }
-  
+
   try {
     // Safely access the collection data
     const collectionData = collectionQuery[collectionId];
     if (!collectionData) return [];
-    
+
     const viewId = viewIds[0];
     if (!viewId) return [];
-    
+
     // Type assertion to avoid TypeScript error
     const view = collectionData[viewId] as any;
     if (!view || !view.table_groups || !view.table_groups.results) return [];
-    
+
     const groups = [];
-    
+
     for (const group of view.table_groups.results) {
       if (!group?.value?.value) continue;
-      
+
       const title = group.value.value.value || '';
       const items = view[`results:text:${title}`]?.blockIds || [];
-      
+
       groups.push({ title, items });
     }
 
@@ -102,7 +102,8 @@ export const getPageData = async (): Promise<PageData> => {
 
   const envPageId = process.env.NOTION_PAGE_ID;
   const pageId = idToUuid(envPageId);
-  console.debug('[DEBUG__lib/notion.ts-envPageId]', envPageId)
+
+  console.debug('[DEBUG__lib/notion.ts-envPageId]', envPageId);
 
   try {
     // Fetch the page data with additional options
@@ -170,14 +171,6 @@ export const getPageData = async (): Promise<PageData> => {
           itemsByType[type].push(props);
         });
       });
-
-    // Sort each category by title
-    // Object.keys(itemsByType).forEach((type) => {
-    //   const items = itemsByType[type];
-    //   if (items) {
-    //     items.sort((a, b) => a.title.localeCompare(b.title));
-    //   }
-    // });
 
     return {
       title,
