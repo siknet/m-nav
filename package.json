@@ -2,6 +2,14 @@
   "name": "m-nav",
   "version": "0.2.0",
   "private": true,
+  "keywords": [
+    "m-nav",
+    "notion",
+    "navigation",
+    "nextjs",
+    "react",
+    "typescript"
+  ],
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
