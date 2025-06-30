@@ -5,6 +5,7 @@ import { MainNav } from '@/components/header/main-nav';
 import { ModeSwitcher } from '@/components/header/mode-switcher';
 import { Button } from '@m-nav/ui/components/button';
 import { Github } from 'lucide-react';
+import { Search } from './header/Search';
 
 export function SiteHeader({ title }: { title?: string }) {
   return (
@@ -12,8 +13,9 @@ export function SiteHeader({ title }: { title?: string }) {
       <div className='container-wrapper'>
         <div className='container flex h-14 items-center gap-2 md:gap-4'>
           <MainNav title={title} />
-          <div className='ml-auto flex items-center gap-2 md:flex-1 md:justify-end'>
+          <div className='ml-auto flex items-center gap-2 flex-1 justify-end'>
             <nav className='flex items-center gap-0.5'>
+              <Search />
               <Button
                 asChild
                 variant='ghost'
