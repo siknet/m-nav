@@ -2,6 +2,7 @@
 
 import { NotionAPI } from 'notion-client';
 import { idToUuid, getPageTitle } from 'notion-utils';
+import { cache } from 'react';
 
 // Initialize the Notion client
 const notion = new NotionAPI({
@@ -95,7 +96,7 @@ export interface PageData {
   items: Record<string, DatabaseItem[]>;
 }
 
-export const getPageData = async (): Promise<PageData> => {
+const getPageDataInternal = async (): Promise<PageData> => {
   console.debug('[DEBUG__lib/notion.ts-getPageData]')
   if (!process.env.NOTION_PAGE_ID) {
     throw new Error('NOTION_PAGE_ID is not defined in environment variables');
@@ -127,7 +128,7 @@ export const getPageData = async (): Promise<PageData> => {
       rawMetadata?.properties?.title?.[0]?.[0] ||
       'Navigation';
     const description = rawMetadata?.properties?.description?.[0]?.[0] || '';
-
+    
     // Get all page IDs from the collection
     const pageGroups = getAllPageIds(
       collectionQuery,
@@ -181,3 +182,6 @@ export const getPageData = async (): Promise<PageData> => {
     throw error;
   }
 };
+
+// 使用 React cache 包装函数，确保在同一请求周期内只执行一次
+export const getPageData = cache(getPageDataInternal);
