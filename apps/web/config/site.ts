@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: 'M-Nav',
+  name: '',
   url: 'https://github.com/busyhe/m-nav',
   ogImage: 'https://ui.shadcn.com/og.jpg',
   description: 'A navigation site powered by Notion databases',

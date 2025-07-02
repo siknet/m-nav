@@ -3,7 +3,8 @@
 import { DatabaseItem, PageData } from '@/lib/notion';
 import { SiteCard } from './site-card';
 import { useSearchContext } from './search-context';
-import { useMemo } from 'react';
+import { useSiteTitle } from './site-title-context';
+import { useMemo, useEffect } from 'react';
 
 interface SiteContentClientProps {
   siteData: PageData;
@@ -11,6 +12,14 @@ interface SiteContentClientProps {
 
 export function SiteContentClient({ siteData }: SiteContentClientProps) {
   const { searchQuery } = useSearchContext();
+  const { setTitle } = useSiteTitle();
+
+  // 动态更新标题
+  useEffect(() => {
+    if (siteData.title) {
+      setTitle(siteData.title);
+    }
+  }, [siteData.title, setTitle]);
 
   const filteredData = useMemo(() => {
     if (!searchQuery.trim()) {
