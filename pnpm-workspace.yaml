@@ -7,3 +7,4 @@ catalog:
   notion-client: ^6.16.0
   notion-types: ^6.16.0
   notion-utils: ^6.16.0
+  turbo: ^2.5.4
