@@ -1,0 +1,15 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      run: pnpm lint
+      glob: "*.{ts,tsx,md}"
+      stage_fixed: true
+      
+prepare-commit-msg:
+  commands:
+    commitizen:
+      interactive: true
+      run: npx czg --hook
+      env:
+        LEFTHOOK: "0"

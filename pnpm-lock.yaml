@@ -6,12 +6,84 @@ settings:
 
 catalogs:
   default:
+    '@eslint/js':
+      specifier: ^9.30.0
+      version: 9.30.0
+    '@next/eslint-plugin-next':
+      specifier: ^15.1.7
+      version: 15.1.7
     '@next/third-parties':
       specifier: ^15.3.4
       version: 15.3.4
+    '@radix-ui/react-slot':
+      specifier: ^1.1.2
+      version: 1.1.2
+    '@tailwindcss/postcss':
+      specifier: ^4.0.8
+      version: 4.0.8
+    '@turbo/gen':
+      specifier: ^2.4.2
+      version: 2.4.2
+    '@types/node':
+      specifier: ^20
+      version: 20.17.19
+    '@types/react':
+      specifier: ^19
+      version: 19.0.10
+    '@types/react-dom':
+      specifier: ^19
+      version: 19.0.4
+    '@typescript-eslint/eslint-plugin':
+      specifier: ^8.24.1
+      version: 8.24.1
+    '@typescript-eslint/parser':
+      specifier: ^8.24.1
+      version: 8.24.1
+    bumpp:
+      specifier: ^10.2.0
+      version: 10.2.0
+    class-variance-authority:
+      specifier: ^0.7.1
+      version: 0.7.1
+    clsx:
+      specifier: ^2.1.1
+      version: 2.1.1
+    eslint:
+      specifier: ^9.20.1
+      version: 9.20.1
+    eslint-config-prettier:
+      specifier: ^9.1.0
+      version: 9.1.0
+    eslint-plugin-only-warn:
+      specifier: ^1.1.0
+      version: 1.1.0
+    eslint-plugin-react:
+      specifier: ^7.37.4
+      version: 7.37.4
+    eslint-plugin-react-hooks:
+      specifier: ^5.1.0
+      version: 5.1.0
+    eslint-plugin-turbo:
+      specifier: ^2.4.2
+      version: 2.4.2
+    globals:
+      specifier: ^15.15.0
+      version: 15.15.0
+    keyv:
+      specifier: 4.5.4
+      version: 4.5.4
+    lefthook:
+      specifier: ^1.12.2
+      version: 1.12.2
+    lucide-react:
+      specifier: ^0.475.0
+      version: 0.475.0
     next:
       specifier: ^15.3.4
       version: 15.3.4
+    next-themes:
+      specifier: ^0.4.4
+      version: 0.4.4
     notion-client:
       specifier: ^6.16.0
       version: 6.16.0
@@ -21,17 +93,43 @@ catalogs:
     notion-utils:
       specifier: ^6.16.0
       version: 6.16.0
+    prettier:
+      specifier: ^3.5.1
+      version: 3.5.1
+    react:
+      specifier: ^19.0.0
+      version: 19.0.0
+    react-dom:
+      specifier: ^19.0.0
+      version: 19.0.0
+    react-icons:
+      specifier: ^5.5.0
+      version: 5.5.0
+    tailwind-merge:
+      specifier: ^3.0.1
+      version: 3.0.1
+    tailwindcss:
+      specifier: ^4.0.8
+      version: 4.0.8
     turbo:
       specifier: ^2.5.4
       version: 2.5.4
+    tw-animate-css:
+      specifier: ^1.2.4
+      version: 1.2.4
+    typescript:
+      specifier: ^5.7.3
+      version: 5.7.3
+    typescript-eslint:
+      specifier: ^8.24.1
+      version: 8.24.1
+    zod:
+      specifier: ^3.24.2
+      version: 3.24.2
 
 importers:
 
   .:
-    dependencies:
-      husky:
-        specifier: ^9.1.7
-        version: 9.1.7
     devDependencies:
       '@m-nav/eslint-config':
         specifier: workspace:*
@@ -40,19 +138,22 @@ importers:
         specifier: workspace:*
         version: link:packages/typescript-config
       bumpp:
-        specifier: ^10.2.0
+        specifier: 'catalog:'
         version: 10.2.0
       eslint:
-        specifier: ^9.20.1
+        specifier: 'catalog:'
         version: 9.20.1(jiti@2.4.2)
+      lefthook:
+        specifier: 'catalog:'
+        version: 1.12.2
       prettier:
-        specifier: ^3.5.1
+        specifier: 'catalog:'
         version: 3.5.1
       turbo:
         specifier: 'catalog:'
         version: 2.5.4
       typescript:
-        specifier: 5.7.3
+        specifier: 'catalog:'
         version: 5.7.3
 
   apps/web:
@@ -64,10 +165,10 @@ importers:
         specifier: 'catalog:'
         version: 15.3.4(next@15.3.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       keyv:
-        specifier: 4.5.4
+        specifier: 'catalog:'
         version: 4.5.4
       lucide-react:
-        specifier: ^0.475.0
+        specifier: 'catalog:'
         version: 0.475.0(react@19.0.0)
       next:
         specifier: 'catalog:'
@@ -85,13 +186,13 @@ importers:
         specifier: 'catalog:'
         version: 6.16.0
       react:
-        specifier: ^19.0.0
+        specifier: 'catalog:'
         version: 19.0.0
       react-dom:
-        specifier: ^19.0.0
+        specifier: 'catalog:'
         version: 19.0.0(react@19.0.0)
       react-icons:
-        specifier: ^5.5.0
+        specifier: 'catalog:'
         version: 5.5.0(react@19.0.0)
     devDependencies:
       '@m-nav/eslint-config':
@@ -101,59 +202,59 @@ importers:
         specifier: workspace:*
         version: link:../../packages/typescript-config
       '@types/node':
-        specifier: ^20
+        specifier: 'catalog:'
         version: 20.17.19
       '@types/react':
-        specifier: ^19
+        specifier: 'catalog:'
         version: 19.0.10
       '@types/react-dom':
-        specifier: ^19
+        specifier: 'catalog:'
         version: 19.0.4(@types/react@19.0.10)
       typescript:
-        specifier: ^5.7.3
+        specifier: 'catalog:'
         version: 5.7.3
 
   packages/eslint-config:
     dependencies:
       '@eslint/js':
-        specifier: ^9.30.0
+        specifier: 'catalog:'
         version: 9.30.0
     devDependencies:
       '@next/eslint-plugin-next':
-        specifier: ^15.1.7
+        specifier: 'catalog:'
         version: 15.1.7
       '@typescript-eslint/eslint-plugin':
-        specifier: ^8.24.1
+        specifier: 'catalog:'
         version: 8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
       '@typescript-eslint/parser':
-        specifier: ^8.24.1
+        specifier: 'catalog:'
         version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
       eslint:
-        specifier: ^9.20.1
+        specifier: 'catalog:'
         version: 9.20.1(jiti@2.4.2)
       eslint-config-prettier:
-        specifier: ^9.1.0
+        specifier: 'catalog:'
         version: 9.1.0(eslint@9.20.1(jiti@2.4.2))
       eslint-plugin-only-warn:
-        specifier: ^1.1.0
+        specifier: 'catalog:'
         version: 1.1.0
       eslint-plugin-react:
-        specifier: ^7.37.4
+        specifier: 'catalog:'
         version: 7.37.4(eslint@9.20.1(jiti@2.4.2))
       eslint-plugin-react-hooks:
-        specifier: ^5.1.0
+        specifier: 'catalog:'
         version: 5.1.0(eslint@9.20.1(jiti@2.4.2))
       eslint-plugin-turbo:
-        specifier: ^2.4.2
+        specifier: 'catalog:'
         version: 2.4.2(eslint@9.20.1(jiti@2.4.2))(turbo@2.5.4)
       globals:
-        specifier: ^15.15.0
+        specifier: 'catalog:'
         version: 15.15.0
       typescript:
-        specifier: ^5.7.3
+        specifier: 'catalog:'
         version: 5.7.3
       typescript-eslint:
-        specifier: ^8.24.1
+        specifier: 'catalog:'
         version: 8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
 
   packages/typescript-config: {}
@@ -161,34 +262,34 @@ importers:
   packages/ui:
     dependencies:
       '@radix-ui/react-slot':
-        specifier: ^1.1.2
+        specifier: 'catalog:'
         version: 1.1.2(@types/react@19.0.10)(react@19.0.0)
       class-variance-authority:
-        specifier: ^0.7.1
+        specifier: 'catalog:'
         version: 0.7.1
       clsx:
-        specifier: ^2.1.1
+        specifier: 'catalog:'
         version: 2.1.1
       lucide-react:
-        specifier: ^0.475.0
+        specifier: 'catalog:'
         version: 0.475.0(react@19.0.0)
       next-themes:
-        specifier: ^0.4.4
+        specifier: 'catalog:'
         version: 0.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
-        specifier: ^19.0.0
+        specifier: 'catalog:'
         version: 19.0.0
       react-dom:
-        specifier: ^19.0.0
+        specifier: 'catalog:'
         version: 19.0.0(react@19.0.0)
       tailwind-merge:
-        specifier: ^3.0.1
+        specifier: 'catalog:'
         version: 3.0.1
       tw-animate-css:
-        specifier: ^1.2.4
+        specifier: 'catalog:'
         version: 1.2.4
       zod:
-        specifier: ^3.24.2
+        specifier: 'catalog:'
         version: 3.24.2
     devDependencies:
       '@m-nav/eslint-config':
@@ -198,25 +299,25 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       '@tailwindcss/postcss':
-        specifier: ^4.0.8
+        specifier: 'catalog:'
         version: 4.0.8
       '@turbo/gen':
-        specifier: ^2.4.2
+        specifier: 'catalog:'
         version: 2.4.2(@types/node@20.17.19)(typescript@5.7.3)
       '@types/node':
-        specifier: ^20
+        specifier: 'catalog:'
         version: 20.17.19
       '@types/react':
-        specifier: ^19
+        specifier: 'catalog:'
         version: 19.0.10
       '@types/react-dom':
-        specifier: ^19
+        specifier: 'catalog:'
         version: 19.0.4(@types/react@19.0.10)
       tailwindcss:
-        specifier: ^4.0.8
+        specifier: 'catalog:'
         version: 4.0.8
       typescript:
-        specifier: ^5.7.3
+        specifier: 'catalog:'
         version: 5.7.3
 
 packages:
@@ -1466,11 +1567,6 @@ packages:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
 
-  husky@9.1.7:
-    resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
-    engines: {node: '>=18'}
-    hasBin: true
-
   iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
     engines: {node: '>=0.10.0'}
@@ -1707,6 +1803,60 @@ packages:
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
 
+  lefthook-darwin-arm64@1.12.2:
+    resolution: {integrity: sha512-fTxeI9tEskrHjc3QyEO+AG7impBXY2Ed8V5aiRc3fw9POfYtVh9b5jRx90fjk2+ld5hf+Z1DsyyLq/vOHDFskQ==}
+    cpu: [arm64]
+    os: [darwin]
+
+  lefthook-darwin-x64@1.12.2:
+    resolution: {integrity: sha512-T1dCDKAAfdHgYZ8qtrS02SJSHoR52RFcrGArFNll9Mu4ZSV19Sp8BO+kTwDUOcLYdcPGNaqOp9PkRBQGZWQC7g==}
+    cpu: [x64]
+    os: [darwin]
+
+  lefthook-freebsd-arm64@1.12.2:
+    resolution: {integrity: sha512-2n9z7Q4BKeMBoB9cuEdv0UBQH82Z4GgBQpCrfjCtyzpDnYQwrH8Tkrlnlko4qPh9MM6nLLGIYMKsA5nltzo8Cg==}
+    cpu: [arm64]
+    os: [freebsd]
+
+  lefthook-freebsd-x64@1.12.2:
+    resolution: {integrity: sha512-1hNY/irY+/3kjRzKoJYxG+m3BYI8QxopJUK1PQnknGo1Wy5u302SdX+tR7pnpz6JM5chrNw4ozSbKKOvdZ5VEw==}
+    cpu: [x64]
+    os: [freebsd]
+
+  lefthook-linux-arm64@1.12.2:
+    resolution: {integrity: sha512-1W4swYIVRkxq/LFTuuK4oVpd6NtTKY4E3VY2Uq2JDkIOJV46+8qGBF+C/QA9K3O9chLffgN7c+i+NhIuGiZ/Vw==}
+    cpu: [arm64]
+    os: [linux]
+
+  lefthook-linux-x64@1.12.2:
+    resolution: {integrity: sha512-J6VGuMfhq5iCsg1Pv7xULbuXC63gP5LaikT0PhkyBNMi3HQneZFDJ8k/sp0Ue9HkQv6QfWIo3/FgB9gz38MCFw==}
+    cpu: [x64]
+    os: [linux]
+
+  lefthook-openbsd-arm64@1.12.2:
+    resolution: {integrity: sha512-wncDRW3ml24DaOyH22KINumjvCohswbQqbxyH2GORRCykSnE859cTjOrRIchTKBIARF7PSeGPUtS7EK0+oDbaw==}
+    cpu: [arm64]
+    os: [openbsd]
+
+  lefthook-openbsd-x64@1.12.2:
+    resolution: {integrity: sha512-2jDOkCHNnc/oK/vR62hAf3vZb1EQ6Md2GjIlgZ/V7A3ztOsM8QZ5IxwYN3D1UOIR5ZnwMBy7PtmTJC/HJrig5w==}
+    cpu: [x64]
+    os: [openbsd]
+
+  lefthook-windows-arm64@1.12.2:
+    resolution: {integrity: sha512-ZMH/q6UNSidhHEG/1QoqIl1n4yPTBWuVmKx5bONtKHicoz4QCQ+QEiNjKsG5OO4C62nfyHGThmweCzZVUQECJw==}
+    cpu: [arm64]
+    os: [win32]
+
+  lefthook-windows-x64@1.12.2:
+    resolution: {integrity: sha512-TqT2jIPcTQ9uwaw+v+DTmvnUHM/p7bbsSrPoPX+fRXSGLzFjyiY+12C9dObSwfCQq6rT70xqQJ9AmftJQsa5/Q==}
+    cpu: [x64]
+    os: [win32]
+
+  lefthook@1.12.2:
+    resolution: {integrity: sha512-2CeTu5NcmoT9YnqsHTq/TF36MlqlzHzhivGx3DrXHwcff4TdvrkIwUTA56huM3Nlo5ODAF/0hlPzaKLmNHCBnQ==}
+    hasBin: true
+
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
@@ -1884,11 +2034,6 @@ packages:
 
   nanoid@3.3.11:
     resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
-    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
-    hasBin: true
-
-  nanoid@3.3.8:
-    resolution: {integrity: sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -2292,11 +2437,6 @@ packages:
 
   semver@7.6.2:
     resolution: {integrity: sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w==}
-    engines: {node: '>=10'}
-    hasBin: true
-
-  semver@7.7.1:
-    resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -3146,7 +3286,7 @@ snapshots:
       fast-glob: 3.3.3
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.7.1
+      semver: 7.7.2
       ts-api-utils: 2.0.1(typescript@5.7.3)
       typescript: 5.7.3
     transitivePeerDependencies:
@@ -4119,8 +4259,6 @@ snapshots:
 
   human-signals@2.1.0: {}
 
-  husky@9.1.7: {}
-
   iconv-lite@0.4.24:
     dependencies:
       safer-buffer: 2.1.2
@@ -4374,6 +4512,49 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
+  lefthook-darwin-arm64@1.12.2:
+    optional: true
+
+  lefthook-darwin-x64@1.12.2:
+    optional: true
+
+  lefthook-freebsd-arm64@1.12.2:
+    optional: true
+
+  lefthook-freebsd-x64@1.12.2:
+    optional: true
+
+  lefthook-linux-arm64@1.12.2:
+    optional: true
+
+  lefthook-linux-x64@1.12.2:
+    optional: true
+
+  lefthook-openbsd-arm64@1.12.2:
+    optional: true
+
+  lefthook-openbsd-x64@1.12.2:
+    optional: true
+
+  lefthook-windows-arm64@1.12.2:
+    optional: true
+
+  lefthook-windows-x64@1.12.2:
+    optional: true
+
+  lefthook@1.12.2:
+    optionalDependencies:
+      lefthook-darwin-arm64: 1.12.2
+      lefthook-darwin-x64: 1.12.2
+      lefthook-freebsd-arm64: 1.12.2
+      lefthook-freebsd-x64: 1.12.2
+      lefthook-linux-arm64: 1.12.2
+      lefthook-linux-x64: 1.12.2
+      lefthook-openbsd-arm64: 1.12.2
+      lefthook-openbsd-x64: 1.12.2
+      lefthook-windows-arm64: 1.12.2
+      lefthook-windows-x64: 1.12.2
+
   levn@0.4.1:
     dependencies:
       prelude-ls: 1.2.1
@@ -4510,8 +4691,6 @@ snapshots:
   mute-stream@0.0.8: {}
 
   nanoid@3.3.11: {}
-
-  nanoid@3.3.8: {}
 
   natural-compare@1.4.0: {}
 
@@ -4789,7 +4968,7 @@ snapshots:
 
   postcss@8.5.3:
     dependencies:
-      nanoid: 3.3.8
+      nanoid: 3.3.11
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
@@ -4966,8 +5145,6 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.6.2: {}
-
-  semver@7.7.1: {}
 
   semver@7.7.2: {}
 

@@ -97,7 +97,6 @@ export interface PageData {
 }
 
 const getPageDataInternal = async (): Promise<PageData> => {
-  console.debug('[DEBUG__lib/notion.ts-getPageData]')
   if (!process.env.NOTION_PAGE_ID) {
     throw new Error('NOTION_PAGE_ID is not defined in environment variables');
   }
@@ -111,6 +110,8 @@ const getPageDataInternal = async (): Promise<PageData> => {
       fetchCollections: true,
       fetchMissingBlocks: true,
     });
+
+    console.debug('[DEBUG__lib/notion.ts-recordMap]', recordMap)
 
     // Get collection data
     const collection = Object.values(recordMap.collection)[0]?.value;
@@ -127,8 +128,8 @@ const getPageDataInternal = async (): Promise<PageData> => {
       getPageTitle(recordMap) ||
       rawMetadata?.properties?.title?.[0]?.[0] ||
       'Navigation';
-    const description = rawMetadata?.properties?.description?.[0]?.[0] || '';
-    
+    const description = rawMetadata?.format?.seo_description || '';
+
     // Get all page IDs from the collection
     const pageGroups = getAllPageIds(
       collectionQuery,
