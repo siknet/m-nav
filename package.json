@@ -37,6 +37,9 @@
       "lefthook",
       "core-js-pure",
       "sharp"
-    ]
+    ],
+    "patchedDependencies": {
+      "notion-client@6.16.0": "patches/notion-client@6.16.0.patch"
+    }
   }
 }
