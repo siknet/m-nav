@@ -1,4 +1,4 @@
-// 'use server';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { NotionAPI } from 'notion-client';
 import { idToUuid, getPageTitle } from 'notion-utils';
@@ -32,11 +32,12 @@ export default function getAllPageIds(
 
     // Type assertion to avoid TypeScript error
     const view = collectionData[viewId] as any;
-    if (!view || !view.table_groups || !view.table_groups.results) return [];
+    const tableGroups = view.table_groups || view.list_groups;
+    if (!view || !tableGroups || !tableGroups.results) return [];
 
     const groups = [];
 
-    for (const group of view.table_groups.results) {
+    for (const group of tableGroups.results) {
       if (!group?.value?.value) continue;
 
       const title = group.value.value.value || '';
@@ -57,7 +58,9 @@ function getPageProperties(
   pageId: string,
   value: any,
   schema: any,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   prefix = '',
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   pageProperties: any[] = []
 ) {
   if (!value || !schema) return null;
@@ -110,8 +113,6 @@ const getPageDataInternal = async (): Promise<PageData> => {
       fetchCollections: true,
       fetchMissingBlocks: true,
     });
-
-    console.debug('[DEBUG__lib/notion.ts-recordMap]', recordMap)
 
     // Get collection data
     const collection = Object.values(recordMap.collection)[0]?.value;

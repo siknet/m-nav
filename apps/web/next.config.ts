@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: ["@m-nav/ui"],
-  staticPageGenerationTimeout: 300,
   images: {
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,

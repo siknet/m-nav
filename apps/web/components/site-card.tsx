@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   Card,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   CardContent,
   CardHeader,
   CardTitle,
@@ -14,6 +15,7 @@ export function SiteCard({
   title,
   description,
   href,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   category,
 }: {
   title: string;

@@ -63,6 +63,7 @@ export async function GET(
   if (icons.length === 0) {
     return proxyFavicon({ domain: asciiDomain });
   }
+  // eslint-disable-next-line prefer-const
   selectedIcon = icons[0];
 
   try {

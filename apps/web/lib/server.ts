@@ -102,6 +102,7 @@ export const getFavicons = async ({
       statusText: response.statusText,
       icons,
     };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error(`Error fetching favicons: ${error.message}`);
     return {
@@ -136,6 +137,7 @@ export const proxyFavicon = async ({ domain }: { domain: string }) => {
         console.log('icon source ok:', source);
         break;
       }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error(`Error fetching proxy favicon: ${error.message}`, source);
     }

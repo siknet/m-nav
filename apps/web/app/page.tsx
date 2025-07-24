@@ -4,8 +4,11 @@ import { SiteContent } from '@/components/site-content';
 import { SiteTitleProvider } from '@/components/site-title-context';
 import { Suspense } from 'react';
 import { GridSkeleton } from '@/components/GridSkeleton';
+import { connection } from 'next/server';
 
-export default function Page() {
+export default async function Page() {
+  await connection()
+
   return (
     <SiteTitleProvider>
       <div data-wrapper='' className='border-grid flex flex-1 flex-col min-h-svh'>
